@@ -1,0 +1,235 @@
+{% extends "base.html" %}
+
+
+{% block body %}
+
+
+    <section class="sec-1">
+        <div class="container">
+            <div class="sec-1__header">
+                <h2 class="sec-1__title">Новые серии сериалов на <span>Series</span>Killer</h2>
+            </div>
+
+            <div class="sec-1__content">
+                {% for date, movies_list in movies.items() %}
+                <div class="sec-1__titles_block">
+                    <div class="sec-1__titles_block_date">{{ date }}</div>
+                </div>
+
+                <ul class="sec-1__block_list">
+                    {% for movie in movies_list %}
+                    <a href="/{{movie.id}}"><li class="sec-1__block_list_item">
+                        <img src="/static/img/banners/{{movie.image}}" alt="#" class="sec-1__block_list_item_img">
+                        <div class="cell cell-1">
+                            {{movie.ru_title}}<br><span class="season">{{movie.en_title}}</span>
+                        </div>
+                        <span class="cell cell-2">198 серия</span>
+                    </li></a>
+                    {% endfor %}
+                </ul>
+            {% endfor %}
+            </div>
+
+        </div>
+    </section>
+
+
+    <section class="sec-2">
+        <div class="container">
+            <div class="sec-2__header">
+                <h2 class="sec-2__title">Новые сериалы на сайте</h2>
+                <div class="sec-2__filter">
+
+                    <div class="sec-2__container">              
+                        <div class="select-box">
+                            <div class="selected">
+                            Жанр
+                            </div>
+
+                            <div class="options-container">
+                                {% for category in categories %}
+                                    <div class="option">{{category.title}}</div>
+                                {% endfor %}
+                            </div>
+
+                        </div>
+
+                        <div class="select-box">
+                        <div class="selected">
+                            Год
+                        </div>
+
+                        <div class="options-container">
+                            <div class="option">2022</div>
+                
+                            <div class="option">2021</div>
+                
+                            <div class="option">2020</div>
+                
+                            <div class="option">2019</div>
+                
+                            <div class="option">2018</div>
+                
+                            <div class="option">2017</div>
+                
+                            <div class="option">2016</div>
+                
+                            <div class="option">2015</div>
+                
+                            <div class="option">2014</div>
+                        </div>
+
+                        </div>
+
+                        <div class="select-box">
+                            <div class="selected">
+                            Тип
+                            </div>
+
+                            <div class="options-container">
+                            <div class="option">ТВ-сериал</div>
+                    
+                            <div class="option">OVA</div>
+                    
+                            <div class="option">ONA</div>
+                    
+                            <div class="option">Фильм</div>
+                    
+                            <div class="option">Спешл</div>
+            
+                            </div>
+
+                        </div>
+
+                        <div class="select-box">
+                            <div class="selected">
+                            Статус
+                            </div>
+
+                            <div class="options-container">
+                            <div class="option">Онгоинг</div>
+                    
+                            <div class="option">Завершено</div>
+                    
+                            <div class="option">Анонс</div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+
+            <div class="sec-2__content">
+                    {% for movie in all_films %}
+                        <a href="#" class="sec-2__poster" data-filter-name="{{movie.ru_title}}">
+
+                            <div class="sec-2__poster-img">
+                                <img src="/static/img/banners/{{movie.image}}" alt="#">
+                                <div class="sec-2__poster-label">114 / 48 серий</div>
+                                <div class="sec-2__poster-rate">9.5</div>
+                            </div>
+                            <div class="sec-2__poster-desc">
+                                <h3 class="sec-2__poster-title">{{movie.ru_title}}</h3>
+                            </div>
+                        </a>
+                    {% endfor %}
+            </div>
+
+
+
+
+
+
+
+
+<!--                <a href="#" class="sec-2__poster" data-filter-name="Боевики">-->
+<!--                    <div class="sec-2__poster-img">-->
+<!--                        <img src="/static/img/banners/32507.jpg" alt="#">-->
+<!--                        <div class="sec-2__poster-label">16 / 8 серий</div>-->
+<!--                        <div class="sec-2__poster-rate">7.9</div>-->
+<!--                    </div>-->
+<!--                    <div class="sec-2__poster-desc">-->
+<!--                        <h3 class="sec-2__poster-title">Барри</h3>-->
+<!--                    </div>-->
+<!--                </a>-->
+
+<!--                <a href="#" class="sec-2__poster" data-filter-name="Детективы">-->
+<!--                    <div class="sec-2__poster-img">-->
+<!--                        <img src="/static/img/banners/32511.jpg" alt="#">-->
+<!--                        <div class="sec-2__poster-label">24 / 16 серий</div>-->
+<!--                        <div class="sec-2__poster-rate">7.2</div>-->
+<!--                    </div>-->
+<!--                    <div class="sec-2__poster-desc">-->
+<!--                        <h3 class="sec-2__poster-title">Мы владеем этим городом</h3>-->
+<!--                    </div>-->
+<!--                </a>-->
+
+<!--                <a href="#" class="sec-2__poster" data-filter-name="Фэнтези">-->
+<!--                    <div class="sec-2__poster-img">-->
+<!--                        <img src="/static/img/banners/32927.jpg" alt="#">-->
+<!--                        <div class="sec-2__poster-label">42 / 28 серий</div>-->
+<!--                        <div class="sec-2__poster-rate">8.3</div>-->
+<!--                    </div>-->
+<!--                    <div class="sec-2__poster-desc">-->
+<!--                        <h3 class="sec-2__poster-title">Во тьме</h3>-->
+<!--                    </div>-->
+<!--                </a>-->
+
+<!--                <a href="#" class="sec-2__poster" data-filter-name="Документальные">-->
+<!--                    <div class="sec-2__poster-img">-->
+<!--                        <img src="/static/img/banners/33202.jpg" alt="#">-->
+<!--                        <div class="sec-2__poster-label">12 / 7 серий</div>-->
+<!--                        <div class="sec-2__poster-rate">9.1</div>-->
+<!--                    </div>-->
+<!--                    <div class="sec-2__poster-desc">-->
+<!--                        <h3 class="sec-2__poster-title">Двенадцать</h3>-->
+<!--                    </div>-->
+<!--                </a>-->
+
+<!--                <a href="#" class="sec-2__poster" data-filter-name="Биография">-->
+<!--                    <div class="sec-2__poster-img">-->
+<!--                        <img src="/static/img/banners/33370.jpg" alt="#">-->
+<!--                        <div class="sec-2__poster-label">56 / 29 серий</div>-->
+<!--                        <div class="sec-2__poster-rate">9.3</div>-->
+<!--                    </div>-->
+<!--                    <div class="sec-2__poster-desc">-->
+<!--                        <h3 class="sec-2__poster-title">Лоббист</h3>-->
+<!--                    </div>-->
+<!--                </a>-->
+
+<!--                <a href="#" class="sec-2__poster" data-filter-name="Фантастика">-->
+<!--                    <div class="sec-2__poster-img">-->
+<!--                        <img src="/static/img/banners/32887.jpg" alt="#">-->
+<!--                        <div class="sec-2__poster-label">40 / 10 серий</div>-->
+<!--                        <div class="sec-2__poster-rate">9.4</div>-->
+<!--                    </div>-->
+<!--                    <div class="sec-2__poster-desc">-->
+<!--                        <h3 class="sec-2__poster-title">Мир Дикого запада</h3>-->
+<!--                    </div>-->
+<!--                </a>-->
+<!--                -->
+<!--            </div>-->
+
+            <div class="sec-2__pagination">
+                <div class="pagination">
+                    <ul></ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+</body>
+{% endblock %}
